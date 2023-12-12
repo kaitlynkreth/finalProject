@@ -18,11 +18,13 @@ const navigation = useNavigation();
         />
       </View>
       <View style={styles.buttonContainer}>
-         <CustomButton title="Create a free account" 
+         <CustomButton title="Create a Free Account" 
             type={ButtonType.PRIMARY} 
             onPress={() => navigation.navigate('Name')}/>
          <CustomButton title="Login" 
-            type={ButtonType.SECONDARY} />
+            type={ButtonType.SECONDARY} 
+            onPress={() => navigation.navigate('Login')} // The onPress prop should be inside the tag
+            />
       </View>
     </SafeAreaView>
   );
