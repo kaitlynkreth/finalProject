@@ -23,13 +23,18 @@ console.log(route.params);
          Name: {name}
         </Text>
 
-        <View style = {styles.image}>
-        <Image source={avatar} style={styles.image} />
+        <View style={styles.image}>
+          {avatar ? (
+            <Image source={{ uri: avatar }} style={styles.image} />
+          ) : (
+            // Placeholder in case there's no avatar
+            <Text>No image available</Text>
+          )}
         </View>
 
-        <Text style ={styles.text2}>Date of Birth: {date ? date.toLocaleDateString() : 'N/A'}</Text>
-        <Text style ={styles.text2}>Location: {city}</Text>
-        <Text style ={styles.text2}>Goal: {purpose}</Text>  
+        <Text style={styles.text2}>Date of Birth: {date ? new Date(date).toLocaleDateString() : 'N/A'}</Text>
+        <Text style={styles.text2}>Location: {city}</Text>
+        <Text style={styles.text2}>Goal: {purpose}</Text>   
        
 
       </View>
@@ -65,15 +70,17 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 16,
-    // margin: 10,
+    margin: 40,
   },
   text2: {
     fontSize: 15,
     marginBottom: 16,
-    color: "#FFFFFF",
-    // margin: 10,
+    marginTop: 16,
+    margin: 40,
   },
   image: {
+    margin: 10,
+    marginBottom: 40,
     width: 100,
     height: 100,
   },
