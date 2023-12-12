@@ -81,15 +81,6 @@ const styles = StyleSheet.create({
         color: "#808080",
         // margin: 10,
       },
-      image: {
-        width: 100,
-        height: 100,
-      },
-      city: {
-        fontSize: 15,
-        marginBottom: 16,
-        color: "#808080",
-      },
       input: {
         fontSize: 20,
         padding: 16,

@@ -16,46 +16,47 @@ export default function ProfilePictureScreen({ route , navigation }) {
   console.log(route.params);
   const { showActionSheetWithOptions } = useActionSheet();
         
-        const launchLibraryRequested = async () => {
-        const { status } = await ImagePicker.getMediaLibraryPermissionsAsync();
-        if (status !== 'granted') {
-          alert('Sorry, we need media library permissions to make this work!');
-          await ImagePicker.requestMediaLibraryPermissionsAsync();
-          return;
-        }
-        try {
-          let result = await ImagePicker.launchImageLibraryAsync({
+  const launchLibraryRequested = async () => {
+    const { status } = await ImagePicker.getMediaLibraryPermissionsAsync();
+    if (status !== 'granted') {
+      alert('Sorry, we need media library permissions to make this work!');
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
+      return;
+    }
+    try {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        quality: 1,
+        aspect: [4, 3],
+      });
+      if (!result.canceled && result.assets) {
+        setAvatar(result.assets[0].uri);
+      }
+    } catch (error) {
+      console.log("Error occurred while accessing the media library: ", error);
+    }
+  };
+  
+  const launchCameraRequested = async () => {
+    const { status } = await ImagePicker.requestCameraPermissionsAsync();
+    if (status !== 'granted') {
+        alert('Sorry, we need camera permissions to make this work!');
+        return;
+    }
+    try {
+        let result = await ImagePicker.launchCameraAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             quality: 1,
             aspect: [4, 3],
-          });
-          if (!result.cancelled) {
-            setAvatar(result.uri);
-          }
-        } catch (error) {
-          console.log("Error occurred while accessing the media library: ", error);
+        });
+        if (!result.canceled && result.assets) {
+            setAvatar(result.assets[0].uri);
         }
-      };
-
-      const launchCameraRequested = async () => {
-        const { status } = await ImagePicker.requestCameraPermissionsAsync();
-        if (status !== 'granted') {
-            alert('Sorry, we need camera permissions to make this work!');
-            return;
-        }
-        try {
-            let result = await ImagePicker.launchCameraAsync({
-                mediaTypes: ImagePicker.MediaTypeOptions.Images,
-                quality: 1,
-                aspect: [4, 3],
-            });
-            if (!result.cancelled) {
-                setAvatar(result.uri);
-            }
-        } catch (error) {
-            console.log("Error occurred while accessing the camera: ", error);
-        }
-        };
+    } catch (error) {
+        console.log("Error occurred while accessing the camera: ", error);
+    }
+  };
+  
     
     const onPress = () => {
         const options = ['Take Photo', 'Choose from Library', 'Cancel'];
@@ -88,7 +89,7 @@ const [avatar, setAvatar] = useState(null);
     {avatar ? (
         <Image
             source={{ uri: avatar }}
-            style={styles.avatarImage} // Define this style as needed
+            style={styles.avatarImage} 
             resizeMode="contain"
         />
     ) : (
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
     topContainer: {
         padding: 16,
       },
-    container: {
+      container: {
         flex: 1,
         alignItems: "stretch",
         justifyContent: "space-between",
@@ -148,5 +149,9 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         overflow: 'hidden', // Ensures the image doesn't bleed outside the border radius
+      },
+      buttonContainer: {
+        paddingHorizontal: 16,
+        marginBottom: 24,
       },
 });
