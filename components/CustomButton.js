@@ -4,12 +4,30 @@ import { Button } from "react-native-elements";
 export const ButtonType = {
   PRIMARY: "primary",
   SECONDARY: "secondary",
+  TERTIARY: "tertiary",
 };
 
 export default function CustomButton({ title, type, onPress }) {
-  const isPrimary = type === ButtonType.PRIMARY;
-  const buttonStyle = isPrimary ? styles.primaryButton : styles.secondaryButton;
-  const titleStyle = isPrimary ? styles.primaryTitle : styles.secondaryTitle;
+  let buttonStyle, titleStyle;
+
+  switch (type) {
+    case ButtonType.PRIMARY:
+      buttonStyle = styles.primaryButton;
+      titleStyle = styles.primaryTitle;
+      break;
+    case ButtonType.SECONDARY:
+      buttonStyle = styles.secondaryButton;
+      titleStyle = styles.secondaryTitle;
+      break;
+    case ButtonType.TERTIARY:
+      buttonStyle = styles.tertiaryButton;
+      titleStyle = styles.tertiaryTitle;
+      break;
+    default:
+      // Default case can be defined as needed
+      break;
+  }
+
   return (
     <Button
       title={title}
@@ -19,6 +37,7 @@ export default function CustomButton({ title, type, onPress }) {
     />
   );
 }
+
 
 const styles = {
   primaryButton: {
@@ -41,6 +60,20 @@ const styles = {
   secondaryTitle: {
     color: '#FF69B4',
     fontSize: 20,
+    fontWeight: 'bold',
+  },
+
+
+  
+  tertiaryButton: {
+    backgroundColor: "#D3D3D3", // Grey color
+    borderRadius: 24,          // Smaller radius for a smaller button
+    height: 30,               // Smaller height for a smaller button
+    marginBottom: 10,
+  },
+  tertiaryTitle: {
+    color: '#000000',            // Black or any other color for the title
+    fontSize: 10,             // Smaller font size
     fontWeight: 'bold',
   },
 };

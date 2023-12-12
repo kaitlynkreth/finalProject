@@ -33,7 +33,7 @@ export default function LocationScreen({ route , navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topContainer}>
-        <Text style={styles.text}>What's Your Location?</Text>
+        <Text style={styles.text}>What's your location?</Text>
         <Text style={styles.text2}>You must share your location to use this App...</Text>
         {errorMsg ? (
           <Text style={styles.errorMsg}>{errorMsg}</Text>
@@ -42,10 +42,10 @@ export default function LocationScreen({ route , navigation }) {
         )}
       </View>
 
-      <View style={styles.topContainer}>
+      <View style={styles.imageContainer}>
         <Image
           style={styles.image}
-          source={require('../assets/icon.png')}
+          source={require('../assets/pin_icon.png')}
           resizeMode="contain"
         />
       </View>
@@ -76,6 +76,13 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: "#FFFFFF",
       },
+      imageContainer: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: 10,
+        backgroundColor: "#FFFFFF",
+      },
       text: {
         fontSize: 20,
         fontWeight: "bold",
@@ -89,8 +96,12 @@ const styles = StyleSheet.create({
         // margin: 10,
       },
       image: {
-        width: 100,
-        height: 100,
+        marginTop: 50,
+        width: 200,
+        height: 200,
+        padding: 10,
+        justifyContent: "center",
+
       },
       city: {
         fontSize: 15,

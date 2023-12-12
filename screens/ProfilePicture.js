@@ -87,12 +87,8 @@ const [avatar, setAvatar] = useState(null);
 
     <TouchableOpacity style={styles.avatarContainer} onPress={onPress}>
     {avatar ? (
-        <Image
-            source={{ uri: avatar }}
-            style={styles.avatarImage} 
-            resizeMode="contain"
-        />
-    ) : (
+            <Image source={{ uri: avatar }} style={styles.icon} />
+          ) : (
         <Image
             source={require("../assets/icon_camera.png")}
             style={styles.icon}
@@ -140,15 +136,18 @@ const styles = StyleSheet.create({
         // margin: 10,
       },
       avatarContainer: {
-        flex: 1, // Take up all available space
-        justifyContent: 'space-between', // Center vertically
-        alignItems: 'center', // Center horizontally
+        flex: 1, 
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
         padding: 10,
+        borderRadius: 24,
       },
       icon: {
-        width: 100,
-        height: 100,
-        overflow: 'hidden', // Ensures the image doesn't bleed outside the border radius
+        margin: 10,
+        marginBottom: 40,
+        width: 170,
+        height: 170,
+        borderRadius: 24,
       },
       buttonContainer: {
         paddingHorizontal: 16,

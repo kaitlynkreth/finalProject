@@ -20,7 +20,7 @@ console.log(route.params);
     <SafeAreaView style={styles.container}>
     <View style={styles.topContainer}>
         <Text style = {styles.text}> 
-         Name: {name}
+         {name}
         </Text>
 
         <View style={styles.image}>
@@ -32,9 +32,12 @@ console.log(route.params);
           )}
         </View>
 
-        <Text style={styles.text2}>Date of Birth: {date ? new Date(date).toLocaleDateString() : 'N/A'}</Text>
-        <Text style={styles.text2}>Location: {city}</Text>
-        <Text style={styles.text2}>Goal: {purpose}</Text>   
+        <View style={styles.detailsContainer}>
+            <Text style={styles.text2}>Date of Birth: {date ? new Date(date).toLocaleDateString() : 'N/A'}</Text>
+            <Text style={styles.text2}>Location: {city}</Text>
+            <Text style={styles.text2}>Goal: {purpose}</Text> 
+        </View>
+          
        
 
       </View>
@@ -63,25 +66,34 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#FFFFFF"
   },
+  detailsContainer: {
+    alignItems:"center",
+    padding: 10,
+    backgroundColor:  "#fcd2e7",
+    borderRadius: 24,
+  },
   buttonContainer: {
     width: "80%",
   },
   text: {
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: "bold",
     marginBottom: 16,
     margin: 40,
   },
   text2: {
-    fontSize: 15,
+    fontSize: 20,
     marginBottom: 16,
     marginTop: 16,
     margin: 40,
+    textAlign: "right",
+
   },
   image: {
     margin: 10,
     marginBottom: 40,
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 200,
+    borderRadius: 24,
   },
 });

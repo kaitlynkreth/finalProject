@@ -9,6 +9,8 @@ import ProfilePictureScreen from './screens/ProfilePicture';
 import LocationScreen from './screens/Location';
 import PurposeScreen from './screens/Purpose';
 import FinalProfileScreen from './screens/FinalProfile';
+import LoginScreen from './screens/Login';
+import DiaryScreen from './screens/Diary';
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 const Stack = createStackNavigator();
 
@@ -24,6 +26,8 @@ export default function App() {
         <Stack.Screen name="Location" component={LocationScreen} />
         <Stack.Screen name="Purpose" component={PurposeScreen} />
         <Stack.Screen name="FinalProfile" component={FinalProfileScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Diary" component={DiaryScreen} />
       </Stack.Navigator>
     </NavigationContainer>
     </ActionSheetProvider>

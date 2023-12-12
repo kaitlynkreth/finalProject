@@ -20,7 +20,7 @@ const handlePress = (newPurpose) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topContainer}>
-        <Text style={styles.text}>What Purpose Best Fits Your Diary Aspirations?</Text>
+        <Text style={styles.text}>Which purpose best fits your Diary aspirations?</Text>
         <Text style={styles.text2}>Select your purpose to direct your goals!</Text>
        
         <View style={styles.buttonContainer}>
