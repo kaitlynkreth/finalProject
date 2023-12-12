@@ -13,7 +13,7 @@ const navigation = useNavigation();
       <View style={styles.topContainer}>
         <Image
           style={styles.image}
-          source={{ uri: "../assets/istockphoto-886145362-612x612.jpg" }}
+          source={require('../assets/istockphoto-886145362-612x612.jpg')} 
           resizeMode="contain"
         />
       </View>

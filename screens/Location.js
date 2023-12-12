@@ -45,7 +45,7 @@ export default function LocationScreen({ route , navigation }) {
       <View style={styles.topContainer}>
         <Image
           style={styles.image}
-          source={{ uri: "..assets/pin_icon.png" }}
+          source={require('../assets/icon.png')}
           resizeMode="contain"
         />
       </View>
